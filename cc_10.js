@@ -87,3 +87,31 @@ inventory.listProducts();
 
 
 
+//Task 4
+
+class ExtendedInventory extends Inventory {
+    constructor() {
+        super();
+        this.orders = [];
+    }
+
+placeOrder(orderID, product, quantity) {
+    if (product.stock >= quantity) {
+        const order = new Order(orderID, product, quantity);
+        this.orders.push(order);
+    } else {
+        console.log("Order cannot be placed due to insufficient stock");
+    }
+}
+
+listOrders() {
+    this.orders.forEach(order => console.log(order.getOrderDetails()));
+}
+}
+
+//Test Cases
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders();
+// Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
+console.log(prod1.getDetails());
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
