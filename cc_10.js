@@ -115,3 +115,20 @@ inventory.listOrders();
 // Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
 console.log(prod1.getDetails());
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
+
+
+//Task 5
+ExtendedInventory.prototype.restockProduct = function(productId, quantity) {
+    const product = this.products.find(prod => prod.id === productId);
+    if (product) {
+        product.stock += quantity;
+    } else {
+        console.log("Product not found");
+    }
+
+};
+    //Test Cases
+
+    inventory.restockProduct(101, 5);
+console.log(prod1.getDetails()); 
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 8"
